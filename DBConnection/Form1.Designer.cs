@@ -32,11 +32,12 @@
             this.button2 = new System.Windows.Forms.Button();
             this.usernameTB = new System.Windows.Forms.TextBox();
             this.passwordTB = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(79, 215);
+            this.button1.Location = new System.Drawing.Point(78, 231);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(101, 23);
             this.button1.TabIndex = 2;
@@ -46,7 +47,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(79, 168);
+            this.button2.Location = new System.Drawing.Point(78, 141);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(101, 23);
             this.button2.TabIndex = 3;
@@ -56,29 +57,43 @@
             // 
             // usernameTB
             // 
-            this.usernameTB.Location = new System.Drawing.Point(80, 72);
+            this.usernameTB.Location = new System.Drawing.Point(79, 41);
             this.usernameTB.Name = "usernameTB";
+            this.usernameTB.PlaceholderText = "Enter Username";
             this.usernameTB.Size = new System.Drawing.Size(100, 23);
             this.usernameTB.TabIndex = 4;
             // 
             // passwordTB
             // 
-            this.passwordTB.Location = new System.Drawing.Point(79, 113);
+            this.passwordTB.Location = new System.Drawing.Point(78, 91);
             this.passwordTB.Name = "passwordTB";
+            this.passwordTB.PlaceholderText = "Enter Password";
             this.passwordTB.Size = new System.Drawing.Size(101, 23);
             this.passwordTB.TabIndex = 5;
+            this.passwordTB.Enter += new System.EventHandler(this.passwordTB_Enter);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(79, 191);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(100, 23);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "Register";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(413, 266);
+            this.ClientSize = new System.Drawing.Size(275, 266);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.passwordTB);
             this.Controls.Add(this.usernameTB);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "SimpleDBConnection";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -89,5 +104,6 @@
         private Button button2;
         private TextBox usernameTB;
         private TextBox passwordTB;
+        private Button button3;
     }
 }

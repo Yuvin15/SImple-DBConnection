@@ -12,6 +12,8 @@ using Microsoft.VisualBasic.ApplicationServices;
 using System.Diagnostics;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Xml.Linq;
+using System.Reflection.Emit;
 
 namespace DBConnection
 {
@@ -24,10 +26,10 @@ namespace DBConnection
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string connetionString;
+            string connectionString;
             SqlConnection cnn;
-            connetionString = @"Server=tcp:cldv10083835.database.windows.net,1433;Initial Catalog=TestDB;Persist Security Info=False;User ID=ST10083835;Password=Keenless19;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-            cnn = new SqlConnection(connetionString);
+            connectionString = @"Server=tcp:cldv10083835.database.windows.net,1433;Initial Catalog=TestDB;Persist Security Info=False;User ID=ST10083835;Password=Keenless19;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            cnn = new SqlConnection(connectionString);
             cnn.Open();
 
             SqlCommand command;
@@ -73,6 +75,39 @@ namespace DBConnection
             con.Close();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = @"Server=tcp:cldv10083835.database.windows.net,1433;Initial Catalog=TestDB;Persist Security Info=False;User ID=ST10083835;Password=Keenless19;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+
+            try
+            {
+                string query = "Insert into Test(USERNAME,PASSWORD) Values('" + usernameTB.Text + "','" +passwordTB.Text + "')";
+                SqlDataAdapter da = new SqlDataAdapter(query, con);
+                con.Open();
+                da.SelectCommand.ExecuteNonQuery();
+                MessageBox.Show("Account created successfully..");
+            }
+            catch
+            {
+                MessageBox.Show("Error occured...");
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        private void passwordTB_Enter(object sender, EventArgs e)
+        {
+            passwordTB.Text = "";
+
+            passwordTB.ForeColor = Color.Black;
+
+            passwordTB.UseSystemPasswordChar = true;
+        }
     }
 }
+
+
 
